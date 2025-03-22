@@ -72,6 +72,8 @@
 -- [5, head [], 7] !! 2  -  doesn't throw an exception because of the laziness
 
 
+-- elements of the list should be the same type
+
 
 -- strings are list of characters
 -- functions: words, unwords
@@ -132,3 +134,11 @@
 
 -- some commands for ghci
 -- :q, :t, :t +d, :l, :i
+
+
+-- qna lecture 1
+-- take returns the list, !! - an element
+-- Integer is unbounded
+-- otherwise is not a keyword
+-- cant use tabs for indentation
+-- space leaks
