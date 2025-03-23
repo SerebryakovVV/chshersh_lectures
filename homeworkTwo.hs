@@ -17,28 +17,7 @@ challenging exercises. You don't need to solve them to finish the
 course but you can if you like challenges :)
 -}
 
-module Lecture2
-    ( -- * Normal
-      lazyProduct
-    , duplicate
-    , removeAt
-    , evenLists
-    , dropSpaces
-
-    , Knight (..)
-    , dragonFight
-
-      -- * Hard
-    , isIncreasing
-    , merge
-    , mergeSort
-
-    , Expr (..)
-    , Variables
-    , EvalError (..)
-    , eval
-    , constantFolding
-    ) where
+module HomeworkTwo where
 
 -- VVV If you need to import libraries, do it after this line ... VVV
 
@@ -52,7 +31,11 @@ zero, you can stop calculating product and return 0 immediately.
 84
 -}
 lazyProduct :: [Int] -> Int
-lazyProduct = error "TODO"
+lazyProduct [] = 0
+lazyProduct [a] = a
+lazyProduct (0 : _) = 0
+lazyProduct (x : xs) = x * (lazyProduct xs)
+
 
 {- | Implement a function that duplicates every element in the list.
 
@@ -62,7 +45,8 @@ lazyProduct = error "TODO"
 "ccaabb"
 -}
 duplicate :: [a] -> [a]
-duplicate = error "TODO"
+duplicate [] = []
+duplicate (x : xs) = x : x : (duplicate xs)
 
 {- | Implement function that takes index and a list and removes the
 element at the given position. Additionally, this function should also
@@ -74,7 +58,12 @@ return the removed element.
 >>> removeAt 10 [1 .. 5]
 (Nothing,[1,2,3,4,5])
 -}
-removeAt = error "TODO"
+removeAt :: Int -> [Int] -> (Maybe Int, [Int])
+removeAt _ [] = (Nothing, [])
+removeAt i list
+  | i >= length list = (Nothing, list)
+  | otherwise = (Just (head ( reverse (take (i+1) list))), take i list ++ drop (i+1) list)
+
 
 {- | Write a function that takes a list of lists and returns only
 lists of even lengths.
