@@ -190,8 +190,9 @@ lowerAndGreater n list =
         go :: Int -> Int -> Int -> [Int] -> String
         go num smacc gracc nums
             | null nums = show num ++ " is greater than " ++ show smacc ++ " and lower than " ++ show gracc ++ " elements"
-            | otherwise = if head nums == num
-                          then go num smacc gracc (tail nums)
-                          else if head nums > num
-                                then go num smacc (gracc+1) (tail nums)
-                                else go num (smacc+1) gracc (tail nums)
+            | otherwise = 
+                if head nums == num
+                then go num smacc gracc (tail nums)
+                else if head nums > num
+                    then go num smacc (gracc+1) (tail nums)
+                    else go num (smacc+1) gracc (tail nums)
