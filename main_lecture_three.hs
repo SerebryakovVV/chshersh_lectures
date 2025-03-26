@@ -177,3 +177,38 @@ class Display a where
 
 -- :t fmap
 -- fmap :: Functor f => (a -> b) -> f a -> f b
+
+
+-- functor laws:
+-- identity
+-- composition
+
+
+-- instance Functor Maybe where
+--     fmap :: (a -> b) -> Maybe a -> Maybe b
+--     fmap _ Nothing = Nothing
+--     fmap f (Just x) = Just (f x)
+
+
+-- foldr :: (a -> b -> b) -> b -> [a] -> b
+-- foldr _ z = z
+-- foldr f z (x : xs) = f x (foldr f z xs)
+
+-- foldr (+) 0 [1 .. 5]
+
+
+-- foldl :: (b -> a -> b) -> b -> [a] -> b
+-- foldl _ z [] = z
+-- foldl f z (x : xs) = foldl f (f z x) xs
+-- leaks memory
+
+-- foldl' is a strict version of foldl
+
+
+-- Foldable
+
+
+-- laziness leads to space leaks
+
+-- {-# LANGUAGE BangPatterns #-}
+-- forces evalutation of lazy computations
